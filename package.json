@@ -1,0 +1,40 @@
+{
+  "name": "xiao-js-sdk",
+  "version": "1.0.0",
+  "description": "Hybrid App JSSDK",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo('test')"
+  },
+  "keywords": [
+    "hybrid app",
+    "JSSDK"
+  ],
+  "author": {
+    "name": "wuyihao",
+    "email": "840461198@qq.com"
+  },
+  "contributors": [
+    {
+      "name": "wuyihao",
+      "email": "840461198@qq.com"
+    }
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.41.4"
+  },
+  "files": [
+    "bridge",
+    "dist",
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.xiao100.com/"
+  },
+  "homepage": "https://gitlab.xinghuolive.com/BOSS/xiao-js-sdk",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.xinghuolive.com/BOSS/xiao-js-sdk.git"
+  }
+}
