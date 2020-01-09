@@ -32,9 +32,9 @@
   "publishConfig": {
     "registry": "https://npm.xiao100.com/"
   },
-  "homepage": "https://gitlab.xinghuolive.com/BOSS/xiao-js-sdk",
+  "homepage": "https://gitlab.xinghuolive.com/xiao-xs-fed/xiao-js-sdk",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.xinghuolive.com/BOSS/xiao-js-sdk.git"
+    "url": "https://gitlab.xinghuolive.com/xiao-xs-fed/xiao-js-sdk.git"
   }
 }
