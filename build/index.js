@@ -29,7 +29,7 @@ rm(root, e => {
             children: false,
             chunks: false,
             chunkModules: false
-        }) + '\n');
+        }) + '\n\n');
 
         if (status.hasErrors()) {
             console.log(chalk.red('  Build failed with errors.\n'));
