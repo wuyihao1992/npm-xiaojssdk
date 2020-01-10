@@ -4,7 +4,8 @@
   "description": "Hybrid App JSSDK",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo('test')"
+    "test": "echo test",
+    "build": "node build/index.js"
   },
   "keywords": [
     "hybrid app",
@@ -22,6 +23,11 @@
   ],
   "license": "ISC",
   "devDependencies": {
+    "chalk": "^3.0.0",
+    "compression-webpack-plugin": "^3.1.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "ora": "^4.0.3",
+    "rimraf": "^3.0.0",
     "webpack": "^4.41.4"
   },
   "files": [
