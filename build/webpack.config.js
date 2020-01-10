@@ -9,9 +9,9 @@ function resolve (dir) {
 }
 
 module.exports = {
+    mode: 'production',
     context: path.resolve(__dirname, '../'),
     entry: './lib/index.js',
-    mode: 'production',
     devtool: false,
     output: {
         path: config.assetsRoot,

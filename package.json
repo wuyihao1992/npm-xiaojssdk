@@ -5,6 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo test",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev",
     "build": "node build/index.js"
   },
   "keywords": [
@@ -29,9 +31,16 @@
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
     "compression-webpack-plugin": "^3.1.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "node-notifier": "^6.0.0",
     "ora": "^4.0.3",
+    "portfinder": "^1.0.25",
     "rimraf": "^3.0.0",
-    "webpack": "^4.41.4"
+    "webpack": "^4.41.4",
+    "webpack-dev-server": "^2.11.5",
+    "webpack-merge": "^4.2.2"
   },
   "files": [
     "bridge",
