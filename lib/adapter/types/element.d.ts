@@ -1,7 +1,10 @@
+/**
+ * 自定义dom元素
+ */
 interface ElementD extends HTMLElement {
+    [key: string]: any;
     type?: string;
     src?: string;
-    [key: string]: any;
 }
 
 export default ElementD

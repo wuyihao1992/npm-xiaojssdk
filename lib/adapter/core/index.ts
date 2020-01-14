@@ -4,15 +4,15 @@ import EnvD from '../types/env';
 import {loadScript} from '../util/element';
 import {checkAliPay, checkWeChat, checkWeChatProgram, checkXiaoApp} from '../util/tool';
 
-class JSSDK {
+class XiaoJSSDK {
     // 环境变量
     private env: EnvD;
 
     // jssdk(公司内部jssdk api未定义)
-    private jssdk: object|null;
+    private jssdk: object | null;
 
     // ready状态
-    private readyStatus: string|null = null;
+    private readyStatus: string | null = null;
 
     // function
     private api: ApiD;
@@ -123,4 +123,4 @@ class JSSDK {
     }
 }
 
-export const xiaoJSSDK = new JSSDK();
+export default XiaoJSSDK

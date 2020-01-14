@@ -51,8 +51,9 @@
     "webpack-merge": "^4.2.2"
   },
   "files": [
-    "bridge",
     "dist",
+    "doc",
+    "example",
     "lib"
   ],
   "publishConfig": {
