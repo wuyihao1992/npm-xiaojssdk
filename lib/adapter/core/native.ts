@@ -1,17 +1,18 @@
 import {nativeConfig} from '../config';
 import {checkIOS, checkAndroid} from '../util/tool';
+import WindowD from '../types/window';
 
 /**
  * js调用native方法
  * native实现对web view url的观察者模式，app解析url
  * @param url 完整的url，长度限制（2k）
  */
-export function webCallNativeApi(url: string) {
+export function webCallNativeApi(url: Location) {
     const isIOS = checkIOS();
     const isAndroid = checkAndroid();
 
     if (isIOS) {
-        (<any>window).location = url;
+        (<WindowD>window).location = url;
     } else if (isAndroid) {
         let iframe: HTMLElement|any = document.createElement('iframe');
         iframe.style.cssText = 'display: none; width: 0; height: 0;';

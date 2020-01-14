@@ -1,6 +1,7 @@
 import {envHost, envVersion, sdkSource} from '../config';
 import ApiD from '../types/api';
 import EnvD from '../types/env';
+import WindowD from '../types/window';
 import {loadScript} from '../util/element';
 import {checkAliPay, checkWeChat, checkWeChatProgram, checkXiaoApp} from '../util/tool';
 
@@ -73,25 +74,25 @@ class XiaoJSSDK {
 
         switch (type) {
             case 'xiao':
-                if ((<any>window)['xiaoJSBridge']) {
-                    jssdk = (<any>window)['xiaoJSBridge'];
+                if ((<WindowD>window)['xiaoJSBridge']) {
+                    jssdk = (<WindowD>window)['xiaoJSBridge'];
                 }
 
                 break;
             case 'alipay':
-                if ((<any>window)['AlipayJSBridge'] === undefined) {
+                if ((<WindowD>window)['AlipayJSBridge'] === undefined) {
                     url = sdkSource.alipay;
                 }
 
-                jssdk = (<any>window)['AlipayJSBridge'];
+                jssdk = (<WindowD>window)['AlipayJSBridge'];
 
                 break;
             case 'wx':
-                if ((<any>window)['wx'] === undefined) {
+                if ((<WindowD>window)['wx'] === undefined) {
                     url = sdkSource.wx;
                 }
 
-                jssdk = (<any>window)['wx'];
+                jssdk = (<WindowD>window)['wx'];
 
                 break;
             default:

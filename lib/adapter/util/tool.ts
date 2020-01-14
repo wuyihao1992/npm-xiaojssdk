@@ -1,4 +1,5 @@
 import {uaMatch} from '../config/ua.dict.config';
+import WindowD from '../types/window';
 
 /**
  * 判断是否为晓教育app
@@ -35,7 +36,7 @@ export function checkWeChat(): boolean {
  * @return {boolean}
  */
 export function checkWeChatProgram() {
-    return (<any>window)['__wxjs_environment'] === 'miniprogram';
+    return (<WindowD>window)['__wxjs_environment'] === 'miniprogram';
 }
 
 /**
