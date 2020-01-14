@@ -6,16 +6,16 @@ import {loadScript} from '../util/element';
 import {checkAliPay, checkWeChat, checkWeChatProgram, checkXiaoApp} from '../util/tool';
 
 class XiaoJSSDK {
+    // ready状态,是否初始化完成
+    private readied: boolean = false;
+
     // 环境变量
     private env: EnvD;
 
     // jssdk(公司内部jssdk api未定义)
     private jssdk: object | null;
 
-    // ready状态
-    private readyStatus: string | null = null;
-
-    // function
+    // JS API
     private api: ApiD;
 
     constructor() {
@@ -104,7 +104,7 @@ class XiaoJSSDK {
         });
     }
 
-    connectBridge() {
+    ready() {
 
     }
 
