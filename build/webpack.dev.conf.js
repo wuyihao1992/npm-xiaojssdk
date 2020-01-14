@@ -26,9 +26,12 @@ const devConfig = {
 };
 
 const defWebpackConf = {
+    resolve: {
+        extensions: ['.js', '.ts', '.json'],
+    },
     mode: 'development',
     context: path.resolve(__dirname, '../'),
-    entry: './example/index.js',
+    entry: './example/index.ts',
     output: {
         path: resolve('./example'),
         filename: '[name].js',
@@ -52,6 +55,30 @@ const defWebpackConf = {
                 test: /\.html$/i,
                 loader: 'html-loader',
                 include: [resolve('example')],
+            },
+            {
+                test: /\.(tsx|ts)?$/,
+                use: [
+                    {
+                        loader: 'tslint-loader',
+                        options: {
+                            configFile: path.resolve(__dirname, '../tslint.json'),
+                        },
+                    },
+                ],
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.(tsx|ts)?$/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            configFile: path.resolve(__dirname, '../tsconfig.json'),
+                        },
+                    },
+                ],
+                exclude: /node_modules/,
             },
         ]
     }

@@ -1,14 +1,16 @@
+import ElementD from '../types/element'
+
 /**
  * 动态插入js
  * @param url
  * @param callback
  */
-export function loadScript(url, callback) {
+export function loadScript(url: string, callback: Function) {
     if (!url) {
         return;
     }
 
-    let script = document.createElement('script');
+    let script: ElementD = document.createElement('script');
     script.type = 'text/javascript';
     script.src = url;
 

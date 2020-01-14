@@ -4,6 +4,8 @@
  * ********************
  */
 
+import InjectorD from '../types/injector';
+
 /**
  * URL Schema方案中native拦截webview的url协议
  * @type hybridschema://hybridapi?callback=callback_id&param=
@@ -17,8 +19,8 @@ const schema = 'xiao://';
  * injector['callbackId'](response)
  * 或 window[injectorName]['callbackId'](response)
  */
-const injectorName = 'hybridCallbackApi';
-const injector = window[injectorName];
+export const injectorName = 'hybridCallbackApi';
+const injector: InjectorD = (<any>window)[injectorName];
 
 /**
  * native调用后的返回结果

@@ -1,10 +1,10 @@
-import {uaMatch} from './dict';
+import {uaMatch} from '../config/ua.dict.config';
 
 /**
  * 判断是否为晓教育app
  * @return {boolean}
  */
-export function checkXiaoApp() {
+export function checkXiaoApp(): boolean {
     const ua = navigator.userAgent.toLowerCase();
 
     return uaMatch.xiao.some(value => ua.indexOf(value.toLowerCase()) > -1);
@@ -14,7 +14,7 @@ export function checkXiaoApp() {
  * 判断是否为支付宝
  * @return {boolean}
  */
-export function checkAliPay() {
+export function checkAliPay(): boolean {
     const ua = navigator.userAgent.toLowerCase();
 
     return uaMatch.ali.some(value => ua.indexOf(value.toLowerCase()) > -1);
@@ -24,7 +24,7 @@ export function checkAliPay() {
  * 判断是否为微信
  * @return {boolean}
  */
-export function checkWeChat() {
+export function checkWeChat(): boolean {
     const ua = navigator.userAgent.toLowerCase();
 
     return uaMatch.wx.some(value => ua.indexOf(value.toLowerCase()) > -1);
@@ -35,14 +35,14 @@ export function checkWeChat() {
  * @return {boolean}
  */
 export function checkWeChatProgram() {
-    return window.__wxjs_environment === 'miniprogram';
+    return (<any>window)['__wxjs_environment'] === 'miniprogram';
 }
 
 /**
  * 判断是否为iOS
  * @return {boolean}
  */
-export function checkIOS() {
+export function checkIOS(): boolean {
     const ua = navigator.userAgent;
     const match = ua.match(/iPhone|iPod|iPad|iOS/i);
 
@@ -53,7 +53,7 @@ export function checkIOS() {
  * 判断是否为Android
  * @return {boolean}
  */
-export function checkAndroid() {
+export function checkAndroid(): boolean {
     const ua = navigator.userAgent;
     const match = ua.match(/Android|Linux/i);
 
@@ -64,7 +64,7 @@ export function checkAndroid() {
  * 判断是否为Mac
  * @return {boolean}
  */
-export function checkMAC() {
+export function checkMAC(): boolean {
     const ua = navigator.userAgent;
     const match = ua.match(/Mac/i);
 

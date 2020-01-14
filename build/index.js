@@ -5,7 +5,7 @@ const rm = require('rimraf');
 const chalk = require('chalk');
 
 const spinner = ora('building SDK...');
-const webpackConfig = require('./webpack.config');
+const webpackConfig = require('./webpack.build.config');
 const config = require('./base.config');
 const root = path.join(config.assetsRoot, config.assetsSubDirectory);
 

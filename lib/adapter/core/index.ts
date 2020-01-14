@@ -1,35 +1,37 @@
 import {envHost, envVersion, sdkSource} from '../config';
+import ApiD from '../types/api';
+import EnvD from '../types/env';
 import {loadScript} from '../util/element';
 import {checkAliPay, checkWeChat, checkWeChatProgram, checkXiaoApp} from '../util/tool';
-import {default as defaultFunction} from './function';
 
 class JSSDK {
+    // 环境变量
+    private env: EnvD;
+
+    // jssdk(公司内部jssdk api未定义)
+    private jssdk: object|null;
+
+    // ready状态
+    private readyStatus: string|null = null;
+
+    // function
+    private api: ApiD;
+
     constructor() {
-        // 环境变量
         this.env = {
             version: envVersion,
             host: '',
         };
 
-        // 保存jssdk(公司内部jssdk api未定义)
         this.jssdk = null;
 
-        // function
         this.api = {};
 
         this.init();
     }
 
     init() {
-        this.initOption();
         this.initEnv();
-    }
-
-    /**
-     * 初始化默认方法
-     */
-    initOption() {
-        this.api = {...defaultFunction};
     }
 
     /**
@@ -65,31 +67,31 @@ class JSSDK {
     /**
      * 加载第三方sdk,防止重复加载
      */
-    loadSDK(type) {
+    loadSDK(type: string) {
         let url = '';
         let jssdk = () => {};
 
         switch (type) {
             case 'xiao':
-                if (xiaoJSBridge) {
-                    jssdk = xiaoJSBridge;
+                if ((<any>window)['xiaoJSBridge']) {
+                    jssdk = (<any>window)['xiaoJSBridge'];
                 }
 
                 break;
             case 'alipay':
-                if (AlipayJSBridge === undefined) {
+                if ((<any>window)['AlipayJSBridge'] === undefined) {
                     url = sdkSource.alipay;
                 }
 
-                jssdk = AlipayJSBridge;
+                jssdk = (<any>window)['AlipayJSBridge'];
 
                 break;
             case 'wx':
-                if (wx === undefined) {
+                if ((<any>window)['wx'] === undefined) {
                     url = sdkSource.wx;
                 }
 
-                jssdk = wx;
+                jssdk = (<any>window)['wx'];
 
                 break;
             default:
@@ -121,6 +123,4 @@ class JSSDK {
     }
 }
 
-const xiaoJSSDK = new JSSDK();
-
-export default xiaoJSSDK
+export const xiaoJSSDK = new JSSDK();

@@ -2,16 +2,18 @@ const path = require('path');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 const config = require('./base.config');
-const util = require('./util');
 
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
+    resolve: {
+        extensions: ['.js', '.ts', '.json'],
+    },
     mode: 'production',
     context: path.resolve(__dirname, '../'),
-    entry: './lib/index.js',
+    entry: './lib/index.ts',
     devtool: false,
     output: {
         path: config.assetsRoot,
@@ -28,6 +30,30 @@ module.exports = {
                     presets: ['@babel/preset-env'],
                     plugins: ['@babel/plugin-proposal-export-default-from']
                 }
+            },
+            {
+                test: /\.(tsx|ts)?$/,
+                use: [
+                    {
+                        loader: 'tslint-loader',
+                        options: {
+                            configFile: path.resolve(__dirname, '../tslint.json'),
+                        },
+                    },
+                ],
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.(tsx|ts)?$/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            configFile: path.resolve(__dirname, '../tsconfig.json'),
+                        },
+                    },
+                ],
+                exclude: /node_modules/,
             },
         ]
     },

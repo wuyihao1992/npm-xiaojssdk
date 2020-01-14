@@ -6,14 +6,14 @@ import {checkIOS, checkAndroid} from '../util/tool';
  * native实现对web view url的观察者模式，app解析url
  * @param url 完整的url，长度限制（2k）
  */
-export function webCallNativeApi(url) {
+export function webCallNativeApi(url: string) {
     const isIOS = checkIOS();
     const isAndroid = checkAndroid();
 
     if (isIOS) {
-        window.location = url;
+        (<any>window).location = url;
     } else if (isAndroid) {
-        let iframe = document.createElement('iframe');
+        let iframe: HTMLElement|any = document.createElement('iframe');
         iframe.style.cssText = 'display: none; width: 0; height: 0;';
         iframe.src = url;
 
@@ -31,9 +31,8 @@ export function webCallNativeApi(url) {
  * 将一组API绑定在web view的window对象中
  * @param functionId js注入的方法ID
  */
-export function appCallWebApi(functionId) {
+export function appCallWebApi(functionId: string) {
     const response = {...nativeConfig.response};
-
     nativeConfig.injector[functionId](response);
 }
 
@@ -43,7 +42,7 @@ export function appCallWebApi(functionId) {
  * @param funName
  * @param callbackId
  */
-export function formatSchemaUrl(funName, callbackId) {
+export function formatSchemaUrl(funName: string, callbackId: string) {
     let url = '';
     const hash = Date.now();
 
@@ -61,7 +60,7 @@ export function findCallback() {
  * @param callbackId
  * @param callback
  */
-const registerHybridCallback = function (callbackId, callback) {
+const registerHybridCallback = function (callbackId: string, callback: Function) {
     if(!nativeConfig.injector) {
         nativeConfig.injector = {};
     }
@@ -73,7 +72,7 @@ const registerHybridCallback = function (callbackId, callback) {
  * 删除native回调方法
  * @param callbackId
  */
-const unRegisterHybridCallback = function (callbackId) {
+const unRegisterHybridCallback = function (callbackId: string) {
     if(!nativeConfig.injector) {
         return;
     }

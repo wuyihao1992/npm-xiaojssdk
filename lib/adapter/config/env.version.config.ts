@@ -5,6 +5,4 @@
  */
 const version = require('../../../package.json').version || '';
 
-export default {
-    version,
-}
+export default version
