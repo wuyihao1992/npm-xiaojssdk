@@ -1,8 +1,6 @@
-/**
- * ********************
- * 与native相关的约定
- * ********************
- */
+/////////////////////////////
+/// 与native相关的约定
+////////////////////////////
 
 import InjectorD from '../types/injector';
 import WindowD from '../types/window';

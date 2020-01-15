@@ -1,3 +1,7 @@
+/////////////////////////////
+/// 宿主环境navigator.userAgent匹配字符串，用于环境检测
+////////////////////////////
+
 /**
  * 晓教育app
  * FIXME
@@ -18,10 +22,6 @@ const UA_ALI = ['AliApp', 'AlipayClient', 'AlipayDefined'];
  */
 const UA_WX = ['MicroMessenger'];
 
-/**
- * ua匹配字符串
- * 用于环境检测
- */
 export const uaMatch = {
     xiao: UA_XIAO,
     ali: UA_ALI,
