@@ -38,18 +38,20 @@ export function appCallWebApi(functionId: string) {
 }
 
 /**
- * FIXME
  * 格式化完整的url
- * @param funName
- * @param callbackId
+ * @param tagName 需要调用的API
+ * @param param json|json string
+ * @param callbackId 回调ID
  */
-export function formatSchemaUrl(funName: string, callbackId: string) {
-    let url = '';
+export function formatSchemaUrl(tagName: string, param: object | string, callbackId: string) {
+    let params = param || '';
     const hash = Date.now();
 
-    url = `${nativeConfig.schema}${funName}?callback=${callbackId}&param=&hash=${hash}`;
+    if (param && Object.prototype.toString.call(param) === '[object Object]') {
+        params = JSON.stringify(param);
+    }
 
-    return url;
+    return `${nativeConfig.schema}${tagName}?callback=${callbackId}&param=${params}&hash=${hash}`;
 }
 
 export function findCallback() {
